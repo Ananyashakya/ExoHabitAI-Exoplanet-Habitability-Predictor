@@ -107,6 +107,14 @@ StandardScaler
    python app.py
 5. Open:  http://127.0.0.1:5000/
 
+## Live Deployment
+
+The project is deployed on Render and accessible at:
+
+Live URL: https://<your-render-app>.onrender.com
+
+Note: Initial load may take a few seconds as the free instance spins up.
+
 ## Future Improvements (Optional Ideas)
 
 Add more features (stellar metallicity, planet radius, eccentricity…)
