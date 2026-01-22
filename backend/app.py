@@ -16,9 +16,30 @@ import pandas as pd
 import sqlite3
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
+def init_db():
+    conn = sqlite3.connect("database.db")
+    cur = conn.cursor()
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS exoplanets (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            planet_mass_earth REAL,
+            orbital_period_days REAL,
+            orbit_distance_au REAL,
+            star_temperature_k REAL,
+            star_radius_solar REAL,
+            habitability_score REAL,
+            is_habitable INTEGER,
+            category TEXT
+        )
+    """)
+    conn.commit()
+    conn.close()
 
 app = Flask(__name__)
 CORS(app)
+init_db()
+
 
 model = joblib.load("rf_model.pkl")
 scaler = joblib.load("scaler.pkl")
